@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Counter } from '@/components/counter';
 import { title } from '@/components/primitives';
+import useStore from '@/store';
 import { Alert } from '@heroui/alert';
 
 const StyleWrapper =  styled.div`
@@ -11,10 +12,11 @@ const StyleWrapper =  styled.div`
 `;
 
 export default function DocsPage() {
+  const bears = useStore((state) => state.bears)
   return (
     <StyleWrapper>
       <div className='space-y-5'>
-        <h1 className={title()}>Docs test</h1>
+        <h1 className={title()}>Docs test {bears}</h1>
         <Alert
           hideIconWrapper
           color="secondary"

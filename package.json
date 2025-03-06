@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack --port 3006",
     "build": "next build",
     "start": "next start --port 3006",
+    "preview":"npx serve@latest out -p 3006",
     "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
   },
   "dependencies": {

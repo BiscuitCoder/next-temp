@@ -1,10 +1,39 @@
 import { create } from 'zustand';
+import {
+  devtools,
+  persist,
+} from 'zustand/middleware';
 
-const useStore = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state:any) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-  updateBears: (newBears:any) => set({ bears: newBears }),
-}))
+// 定义状态的类型
+interface BearState {
+    bears: number;
+    count: number;
+    updateRandomCount: ()=>void;
+    increasePopulation: (v:number) => void;
+    removeAllBears: () => void;
+    updateBears: (newBears: number) => void;
+}
 
-export default useStore
+
+// 创建 Zustand 存储
+const useStore = create<BearState>()(
+    devtools(
+        persist(
+            (set) => ({
+                bears: 0,
+                count: 0,
+                increasePopulation: (v:number) => set((state) => ({ bears: state.bears + 1 }),false,{type:'increasePopulation',"info":v}),
+                removeAllBears: () => set({ bears: 0,count: 0 },false,'removeAllBears'),
+                updateBears: (newBears) => set({ bears: newBears },false,'updateBears'),
+                updateRandomCount: () => set((state) => ({ count: Math.floor(Math.random() * 100) }),false,'updateRandomCount'),
+            }),
+            {
+                name: 'bear-storage',
+                partialize:(state)=>({bears:state.bears})
+            }
+        )
+    )
+);
+
+
+export default useStore;
