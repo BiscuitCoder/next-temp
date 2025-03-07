@@ -66,12 +66,12 @@ export const Navbar = () => {
               </NextLink>
             </NavbarItem>
           ))}
-          <a href="https://github.com/BiscuitCoder/web3-next-temp" target='_blank' className='flex items-center space-x-[2px]'>
+          <a href="https://github.com/BiscuitCoder/web3-next-temp" rel='noopener' target='_blank' className='flex items-center space-x-[2px]'>
             <i className="ri-github-fill"></i>
             <span>Github</span>
             <i className="ri-external-link-line text-sm opacity-50"></i>
           </a>
-          <a href="https://0xspace.tech/" target='_blank' className='flex items-center space-x-[2px]'>
+          <a href="https://0xspace.tech/" target='_blank' rel='noopener' className='flex items-center space-x-[2px]'>
             <i className="ri-article-fill"></i>
             <span>Docs</span>
             <i className="ri-external-link-line text-sm opacity-50"></i>

@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 space-y-6">
       <h1 className='text-xl font-bold text-center text-blue-500'>{t('hello')}</h1>
-      <img src={`/${imgIndex}.webp`} className='w-[40%] rounded-xl cursor-pointer hover:scale-[95%] active:scale-[80%] transition-all' title='Random image' onClick={setImgIndexHandler} />
+      <img src={`/${imgIndex}.webp`} alt='emoji' className='w-[40%] rounded-xl cursor-pointer hover:scale-[95%] active:scale-[80%] transition-all' title='Random image' onClick={setImgIndexHandler} />
     </section>
   );
 }
