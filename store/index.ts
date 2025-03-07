@@ -4,7 +4,6 @@ import {
   persist,
 } from 'zustand/middleware';
 
-// 定义状态的类型
 interface BearState {
     bears: number;
     count: number;
@@ -15,7 +14,7 @@ interface BearState {
 }
 
 
-// 创建 Zustand 存储
+
 const useStore = create<BearState>()(
     devtools(
         persist(

@@ -1,25 +1,26 @@
 'use client'
-import { useTranslation } from 'react-i18next';
-import { useAccount } from 'wagmi';
+import {
+  useEffect,
+  useState,
+} from 'react';
 
-import useStore from '@/store';
-import { Button } from '@heroui/button';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
-  const bears = useStore((state) => state)
-  const {increasePopulation,removeAllBears,updateRandomCount} = useStore((state) => state)
-  const {address} = useAccount()
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation();
+  const [imgIndex, setImgIndex] = useState(0);
+  const setImgIndexHandler = () => {
+    const randomNum = Math.floor(Math.random() * 10);
+    setImgIndex(randomNum);
+  }
+  useEffect(() => {
+    setImgIndexHandler();
+  }, []);
+
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <h1>{t('hello')}</h1>
-      <div>{address}</div>
-      <h1>bears store：{bears.bears} | {bears.count}</h1>
-      <div className='flex items-center space-x-4'>
-        <Button onPress={()=>increasePopulation(bears.bears)} color='primary'>one up</Button>
-        <Button onPress={updateRandomCount}>updateRandomCount</Button>
-        <Button  onPress={removeAllBears} color='danger'>clear</Button>
-      </div>
+    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 space-y-6">
+      <h1 className='text-xl font-bold text-center text-blue-500'>{t('hello')}</h1>
+      <img src={`/${imgIndex}.webp`} className='w-[40%] rounded-xl cursor-pointer hover:scale-[95%] active:scale-[80%] transition-all' title='Random image' onClick={setImgIndexHandler} />
     </section>
   );
 }
