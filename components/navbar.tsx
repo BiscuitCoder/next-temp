@@ -1,12 +1,9 @@
 import clsx from 'clsx';
 import NextLink from 'next/link';
 
-import {
-  Logo,
-  SearchIcon,
-} from '@/components/icons';
-import { ThemeSwitch } from '@/components/theme-switch';
-import Wallet from '@/components/wallet';
+import { SearchIcon } from '@/components/Icons';
+import { ThemeSwitch } from '@/components/ThemeSwitch';
+import Wallet from '@/components/Wallet';
 import { siteConfig } from '@/config/site';
 import { Input } from '@heroui/input';
 import { Kbd } from '@heroui/kbd';
@@ -21,6 +18,8 @@ import {
   NavbarMenuToggle,
 } from '@heroui/navbar';
 import { link as linkStyles } from '@heroui/theme';
+
+import LanguageSetting from './LanguageSetting';
 
 export const Navbar = () => {
   const searchInput = (
@@ -49,11 +48,10 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="text-inherit text-2xl">0xspace Demo</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden lg:flex gap-4 justify-start ml-10">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -78,6 +76,11 @@ export const Navbar = () => {
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
         </NavbarItem>
+
+        <NavbarItem className="hidden md:flex">
+          <LanguageSetting/>
+        </NavbarItem>
+        
         <NavbarItem className="hidden md:flex">
           <Wallet/>
         </NavbarItem>
@@ -85,6 +88,7 @@ export const Navbar = () => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <ThemeSwitch />
+        <LanguageSetting/>
         <Wallet/>
         <NavbarMenuToggle />
       </NavbarContent>

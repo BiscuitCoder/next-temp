@@ -6,14 +6,14 @@ import {
   Viewport,
 } from 'next';
 
-import { Navbar } from '@/components/navbar';
+import { Navbar } from '@/components/Navbar';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import StyledComponentsRegistry from '@/lib/registry';
 import { Link } from '@heroui/link';
 
 import { Providers } from './providers';
-import WalletProvider from './WalletProvider';
+import WalletProvider from './walletProvider';
 
 export const metadata: Metadata = {
   title: {

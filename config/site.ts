@@ -55,3 +55,9 @@ export const siteConfig = {
     sponsor: "https://patreon.com/jrgarciadev",
   },
 };
+
+// 服务端渲染路由
+export const serverPath:string[] = [
+  '/docs',
+  '/404'
+];
